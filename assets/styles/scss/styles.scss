@@ -1,0 +1,329 @@
+/** @format */
+
+/* ----- Settings [fonts, colors, spacing, etc] ----- */
+
+/* Font */
+
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
+
+:root {
+	/* font-sizes */
+	--fs-1: 4rem; /* 64px */
+	--fs-2: 2.5rem; /* 40px */
+	--fs-3: 1.125rem; /* 18px */
+	--fs-4: 1rem; /* 16px */
+	--fs-5: 0.75rem; /* 12px */
+
+	/* colors */
+	--hover-opacity: 0.8;
+	--cyan-300: hsl(192, 90%, 77%);
+	--cyan-300-hover: hsl(192, 90%, 60%);;
+	--cyan-600: hsl(192, 37%, 48%);
+	--cyan-600-rgb-values: 77, 150, 168;
+	--purple-300: hsl(268, 100%, 86%);
+	--purple-300-hover: hsl(268, 100%, 75%);
+	--purple-600: hsl(268, 34%, 53%);
+	--slate-300: hsl(240, 18%, 85%);
+	--slate-600: hsl(240, 10%, 57%);
+	--slate-900: hsl(240, 21%, 20%);
+	--white: hsl(0, 0%, 98%);
+
+	/* spacing */
+
+	--space-50: 0.25rem; /* 4px */
+	--space-100: 0.5rem; /* 8px */
+	--space-200: 1rem; /* 16px */
+	--space-300: 1.5rem; /* 24px */
+	--space-400: 2rem; /* 32px */
+	--space-500: 2.5rem; /* 40px */
+	--space-600: 3rem; /* 48px */
+	--space-700: 3.5rem; /* 56px */
+	--space-800: 4rem; /* 64px */
+	--space-900: 4.5rem; /* 72px */
+	--space-1000: 5rem; /* 80px */
+	--space-1400: 7rem; /* 112px */
+	--space-2150: 10.75rem; /* 172px */
+}
+
+/* ---- General Styles [elements] */
+
+body {
+	font-family: "Red Hat Display", sans-serif;
+	text-align: center;
+	background-color: var(--white, white);
+	font-weight: 600;
+}
+
+h1,
+h2 {
+	font-weight: 900;
+	color: var(--slate-900, black);
+}
+
+h1 {
+	text-shadow: 0 0.25rem 0.25rem var(--slate-600, grey);
+}
+
+p {
+	margin-block: var(--space-300);
+	color: var(--slate-600);
+}
+/* ----- Components [Blocks, Exceptions] */
+
+/* --- Page sections --- */
+
+/* Page header */
+
+.logo-div {
+	margin-top: var(--space-600, 3rem); /* 48px */
+}
+
+.hero {
+	margin-block-start: var(--space-800);
+	margin-block-end: var(--space-400, 2rem);
+}
+
+.hero-full {
+	margin-block-end: var(--space-600);
+	margin-inline: auto;
+}
+
+.hero-left,
+.hero-right {
+	display: none;
+}
+
+@media (min-width: 64rem) {
+	.hero {
+		display: grid;
+		grid-template-areas: "left-image header-content right-image";
+		// grid-template-columns: repeat(3, 1fr);
+		align-items: center;
+	}
+
+	.hero-full {
+		display: none;
+	}
+
+	.hero-left,
+	.hero-right {
+		display: block;
+	}
+
+	.hero-left {
+		grid-area: left-image;
+	}
+
+	.right-image {
+		grid-area: right-image;
+	}
+
+	.hero-content {
+		grid-area: header-content;
+	}
+}
+
+/* Features-1 */
+
+.features-1 {
+	margin-block-start: var(--space-800, 4rem);
+}
+
+.features-1 .number::before {
+	content: "01";
+}
+
+.chatting-images {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-200);
+	margin-inline: auto;
+	justify-content: center;
+	margin-block: var(--space-800, 4rem);
+}
+
+.chatting-images img {
+	flex: 1 0 7rem;
+	aspect-ratio: 1 / 1;
+	min-width: 7rem;
+	border-radius: 0.5rem;
+}
+
+.sub-title-intro {
+	text-transform: uppercase;
+	margin-block-end: var(--space-200);
+}
+
+/* footer */
+
+.footer {
+	--overlay-opacity: 0.9;
+	margin-block-start: var(--space-2150, 10.75rem); /* 172px */
+	padding-block: var(--space-800);
+	background-image:
+		linear-gradient(
+			rgba(var(--cyan-600-rgb-values), var(--overlay-opacity)),
+			rgba(var(--cyan-600-rgb-values), var(--overlay-opacity))
+		),
+		url("../../images/mobile/image-footer.jpg");
+	background-size: cover;
+	color: var(--white, white);
+	position: relative;
+}
+
+@media (min-width: 48rem) /* 768px */ {
+  .footer {
+    background-image:
+		linear-gradient(
+			rgba(var(--cyan-600-rgb-values), var(--overlay-opacity)),
+			rgba(var(--cyan-600-rgb-values), var(--overlay-opacity))
+		),
+		url("../../images/tablet/image-footer.jpg");
+
+  }
+} 
+
+@media (min-width: 64rem) /* 1024px */ {
+  .footer {
+    background-image:
+		linear-gradient(
+			rgba(var(--cyan-600-rgb-values), var(--overlay-opacity)),
+			rgba(var(--cyan-600-rgb-values), var(--overlay-opacity))
+		),
+		url("../../images/desktop/image-footer.jpg");
+  }
+} 
+
+.number-holder {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, calc(3.5rem / 2 - 100%));
+}
+
+.footer .number::before {
+	content: "02";
+}
+
+.footer h2,
+.footer p {
+	color: inherit;
+}
+
+/* --- Smaller components --- */
+.button {
+	padding: var(--space-200, 1rem) var(--space-500, 2.5rem);
+	color: var(--white, white);
+	border-radius: 50rem;
+	border: none;
+	font-weight: 800;
+}
+
+.button[data-color="cyan"] {
+	background-color: var(--cyan-600);
+}
+
+.button[data-color="cyan"]:is(:hover, :focus-visible) {
+	background-color: var(--cyan-300-hover);
+}
+
+.button[data-color="purple"] {
+	background-color: var(--purple-600);
+}
+
+.button[data-color="purple"]:is(:hover, :focus-visible) {
+	background-color: var(--purple-300-hover);
+}
+
+.number,
+.number-line {
+	--line-color: var(--slate-300);
+}
+
+.number {
+	width: var(--space-700, 3.5rem);
+	height: var(--space-700, 3.5rem);
+	border-radius: 100%;
+	border: 1px solid var(--line-color, grey);
+	color: var(--slate-600);
+	font-weight: 900;
+	display: grid;
+	place-items: center;
+	background-color: var(--white, white);
+}
+
+.number-line {
+	width: 1px;
+	height: 80px;
+	background-color: var(--line-color);
+}
+
+/* ----- Compositions ------ */
+
+button + button {
+	margin: var(--space-200, 1rem) var(--space-200, 1rem) 0;
+}
+
+/* ----- Utilities ----- */
+
+/* layouts */
+
+.outer-wrapper {
+	max-width: 90rem; /* 1440px */
+	margin-inline: auto;
+}
+
+.wrapper {
+	margin-inline: var(--space-400, 2rem);
+}
+
+.horizontally-center-elements {
+	display: grid;
+	justify-items: center;
+}
+
+/* text */
+.text-preset-1 {
+	font-size: var(--fs-1, 4rem); /* 64px */
+	line-height: 110%;
+	letter-spacing: 0;
+}
+
+.text-preset-2 {
+	font-size: var(--fs-2, 2.5rem); /* 40px */
+	line-height: 110%;
+	letter-spacing: 0;
+}
+
+.text-preset-3 {
+	font-size: var(--fs-4, 1rem); /* 16px */
+	line-height: 110%;
+	letter-spacing: 0.25rem; /* 4px */
+	font-weight: 800;
+}
+
+.text-preset-4 {
+	font-size: var(--fs-3, 1.125rem); /* 18px */
+	line-height: 110%;
+	letter-spacing: 0px;
+}
+
+.text-preset-5 {
+	font-size: var(--fs-4, 1rem); /* 16px */
+	line-height: 150%;
+	letter-spacing: 0;
+}
+
+/* color */
+
+.color-cyan-300 {
+	color: var(--cyan-300);
+}
+
+.color-cyan-600 {
+	color: var(--cyan-600);
+}
+
+.color-purple-300 {
+	color: var(--purple-300);
+}
