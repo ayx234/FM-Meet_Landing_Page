@@ -1,6 +1,6 @@
 /** @format */
 
-/* Partials */
+// Partials
 
 @use "mixins";
 @use "settings";
@@ -8,7 +8,6 @@
 /* Font imports */
 
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
-
 
 /* ---- General Styles [elements] */
 
@@ -64,14 +63,14 @@ p {
 }
 
 .hero-content-inner-wrapper {
-  max-width: 28rem;
-  margin-inline: auto;
+	max-width: 28rem;
+	margin-inline: auto;
 }
-@media (min-width: 64rem) {
+@media (min-width: 64rem) /* 1024px */ {
 	.hero {
 		display: grid;
 		grid-template-areas: "left-image header-content right-image";
-    grid-template-columns: 2fr 3fr 2fr;
+		grid-template-columns: 2fr 3fr 2fr;
 		align-items: center;
 	}
 
@@ -87,10 +86,10 @@ p {
 	.hero-left {
 		grid-area: left-image;
 	}
-  
+
 	.hero-right {
-    grid-area: right-image;
-    justify-self: end;
+		grid-area: right-image;
+		justify-self: end;
 	}
 
 	.hero-content {
@@ -118,10 +117,16 @@ p {
 }
 
 .chatting-images img {
-	flex: 1 0 7rem; 
+	flex: 1 0 7rem;
 	aspect-ratio: 1 / 1;
 	min-width: 7rem;
 	border-radius: 0.5rem;
+	box-shadow: 0.25rem 0.25rem 0.25rem 0 settings.$slate-900;
+	transition: transform 0.25s;
+
+	&:is(:hover, :focus-visible) {
+		transform: scale(1.05) rotateZ(-5deg);
+	}
 }
 
 .features-header {
@@ -136,16 +141,21 @@ p {
 	font-weight: 900;
 }
 
-$overlay-opacity: 0.9;
 /* footer */
 
 .footer {
-	margin-block-start: settings.$space-2150; /* 172px */
+	margin-block-start: settings.$space-2150;
 	padding-block: settings.$space-800;
 	background-image:
 		linear-gradient(
-			rgba(settings.$cyan-600-rgb-values, $overlay-opacity),
-			rgba(settings.$cyan-600-rgb-values, $overlay-opacity)
+			rgba(
+				settings.$cyan-600-rgb-values,
+				settings.$footer-overlay-opacity
+			),
+			rgba(
+				settings.$cyan-600-rgb-values,
+				settings.$footer-overlay-opacity
+			)
 		),
 		url("../../images/mobile/image-footer.jpg");
 	background-size: cover;
@@ -157,8 +167,14 @@ $overlay-opacity: 0.9;
 	.footer {
 		background-image:
 			linear-gradient(
-				rgba(settings.$cyan-600-rgb-values, $overlay-opacity),
-				rgba(settings.$cyan-600-rgb-values, $overlay-opacity)
+				rgba(
+					settings.$cyan-600-rgb-values,
+					settings.$footer-overlay-opacity
+				),
+				rgba(
+					settings.$cyan-600-rgb-values,
+					settings.$footer-overlay-opacity
+				)
 			),
 			url("../../images/tablet/image-footer.jpg");
 	}
@@ -168,8 +184,14 @@ $overlay-opacity: 0.9;
 	.footer {
 		background-image:
 			linear-gradient(
-				rgba(settings.$cyan-600-rgb-values, $overlay-opacity),
-				rgba(settings.$cyan-600-rgb-values, $overlay-opacity)
+				rgba(
+					settings.$cyan-600-rgb-values,
+					settings.$footer-overlay-opacity
+				),
+				rgba(
+					settings.$cyan-600-rgb-values,
+					settings.$footer-overlay-opacity
+				)
 			),
 			url("../../images/desktop/image-footer.jpg");
 	}
@@ -263,17 +285,19 @@ button + button {
 }
 
 .wrapper {
-  margin-inline: settings.$fluid-space-28-160;
-  
-  @media(min-width: 64rem){
-    &.hero-content {
-      margin-inline: 0;
-      padding-inline: settings.$fluid-space-16-32;
-    }
-  }
+	margin-inline: settings.$fluid-space-28-160;
+
+	@media (min-width: 64rem) /* 1024px */ {
+		&.hero-content {
+			margin-inline: 0;
+			padding-inline: settings.$fluid-space-16-32;
+		}
+	}
 }
 
-
+.text-preset-5 {
+	@include mixins.text-preset-5;
+}
 
 .horizontally-center-elements {
 	display: grid;

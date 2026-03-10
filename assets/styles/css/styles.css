@@ -1,43 +1,11 @@
 /** @format */
-/* Partials */
 /** @format */
 /* Font imports */
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
 /**
- * ----- Settings [fonts, colors, spacing, etc] -----
- *
+ * 
  * @format
  */
-/* font-sizes */
-/* 64px */
-/* 40px */
-/* 18px */
-/* 16px */
-/* 12px */
-/* colors */
-/* spacing */
-/* 4px */
-/* 8px */
-/* 16px */
-/* 24px */
-/* 32px */
-/* 40px */
-/* 48px */
-/* 56px */
-/* 64px */
-/* 72px */
-/* 80px */
-/* 112px */
-/* 172px */
-/* 544px */
-/* TOOLS [mixins,functions] */
-/* text */
-.text-preset-5 {
-  font-size: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
-  line-height: 150%;
-  letter-spacing: 0;
-}
-
 /* ---- General Styles [elements] */
 body {
   font-family: "Red Hat Display", sans-serif;
@@ -145,6 +113,11 @@ p {
   aspect-ratio: 1/1;
   min-width: 7rem;
   border-radius: 0.5rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem 0 hsl(240, 21%, 20%);
+  transition: transform 0.25s;
+}
+.chatting-images img:is(:hover, :focus-visible) {
+  transform: scale(1.05) rotateZ(-5deg);
 }
 
 .features-header {
@@ -164,7 +137,7 @@ p {
 
 /* footer */
 .footer {
-  margin-block-start: 10.75rem; /* 172px */
+  margin-block-start: 10.75rem;
   padding-block: 4rem;
   background-image: linear-gradient(rgba(77, 150, 168, 0.9), rgba(77, 150, 168, 0.9)), url("../../images/mobile/image-footer.jpg");
   background-size: cover;
@@ -276,6 +249,12 @@ button + button {
     margin-inline: 0;
     padding-inline: clamp(1rem, 0.7143rem + 1.4286vw, 2rem);
   }
+}
+
+.text-preset-5 {
+  font-size: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+  line-height: 150%;
+  letter-spacing: 0;
 }
 
 .horizontally-center-elements {

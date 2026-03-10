@@ -2,9 +2,9 @@
 
 @use 'settings';
 
-/* TOOLS [mixins,functions] */
+// TOOLS [mixins,functions]
 
-/* text */
+// text
 
 @mixin text-preset-1 {
 	font-size: settings.$fluid-fs-36-64; /* 64px */
@@ -35,7 +35,4 @@
 	font-size: settings.$fluid-fs-16-18;
 	line-height: 150%;
 	letter-spacing: 0;
-}
-.text-preset-5 {
-	@include text-preset-5;
 }

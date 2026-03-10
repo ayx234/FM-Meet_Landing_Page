@@ -2,8 +2,9 @@
 
 PROJECT TODOS:
 
-- Clean code
-- Review for accessibility, readability and maintainability
+- Use AI
+    - Review for accessibility, readability and maintainability
+- Construct this README
 
 # Frontend Mentor - Meet landing page solution
 
