@@ -1,0 +1,55 @@
+/**
+ * ----- Settings [fonts, colors, spacing, etc] -----
+ *
+ * @format
+ */
+
+/* font-sizes */
+$fs-1: 4rem; /* 64px */
+$fs-2: 2.5rem; /* 40px */
+$fs-3: 1.125rem; /* 18px */
+$fs-4: 1rem; /* 16px */
+$fs-5: 0.75rem; /* 12px */
+$fluid-fs-16-18: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+$fluid-fs-32-40: clamp(2rem, 1.8571rem + 0.7143vw, 2.5rem);
+$fluid-fs-36-64: clamp(2.25rem, 1.75rem + 2.5vw, 4rem);
+$fluid-fs-40-64: clamp(2.5rem, 2.0714rem + 2.1429vw, 4rem);
+$fluid-fs-44-72: clamp(2.75rem, 2.25rem + 2.5vw, 4.5rem);
+$fluid-fs-52-64: clamp(3.25rem, 3.0357rem + 1.0714vw, 4rem);
+
+/* colors */
+$cyan-300: hsl(192, 90%, 77%);
+$cyan-300-hover: hsl(192, 90%, 60%);
+$cyan-600: hsl(192, 37%, 48%);
+$cyan-600-rgb-values: rgb(77, 150, 168);
+$purple-300: hsl(268, 100%, 86%);
+$purple-300-hover: hsl(268, 100%, 75%);
+$purple-600: hsl(268, 34%, 53%);
+$slate-300: hsl(240, 18%, 85%);
+$slate-600: hsl(240, 10%, 57%);
+$slate-900: hsl(240, 21%, 20%);
+$white: hsl(0, 0%, 98%);
+$hover-opacity: 0.8;
+$number-line-color: $slate-300;
+
+/* spacing */
+
+$space-50: 0.25rem; /* 4px */
+$space-100: 0.5rem; /* 8px */
+$space-200: 1rem; /* 16px */
+$space-300: 1.5rem; /* 24px */
+$space-400: 2rem; /* 32px */
+$space-500: 2.5rem; /* 40px */
+$space-600: 3rem; /* 48px */
+$space-700: 3.5rem; /* 56px */
+$space-800: 4rem; /* 64px */
+$space-900: 4.5rem; /* 72px */
+$space-1000: 5rem; /* 80px */
+$space-1400: 7rem; /* 112px */
+$space-2150: 10.75rem; /* 172px */
+$space-6800: 34rem; /* 544px */
+$fluid-space-8-64: clamp(0.5rem, -0.5rem + 5vw, 4rem);
+$fluid-space-16-32: clamp(1rem, 0.7143rem + 1.4286vw, 2rem);
+$fluid-space-28-160: clamp(1.75rem, -0.6071rem + 11.7857vw, 10rem);
+$fluid-space-600-1000: clamp(3rem, 2.4286rem + 2.8571vw, 5rem);
+$fluid-space-56-120: clamp(3.5rem, 2.3571rem + 5.7143vw, 7.5rem);

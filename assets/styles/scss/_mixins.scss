@@ -1,0 +1,41 @@
+/** @format */
+
+@use 'settings';
+
+/* TOOLS [mixins,functions] */
+
+/* text */
+
+@mixin text-preset-1 {
+	font-size: settings.$fluid-fs-36-64; /* 64px */
+	line-height: 110%;
+	letter-spacing: 0;
+}
+
+@mixin text-preset-2 {
+	font-size: settings.$fluid-fs-32-40; /* 40px */
+	line-height: 110%;
+	letter-spacing: 0;
+}
+
+@mixin text-preset-3 {
+	font-size: settings.$fs-4; /* 16px */
+	line-height: 110%;
+	letter-spacing: 0.25rem; /* 4px */
+	font-weight: 800;
+}
+
+@mixin text-preset-4 {
+	font-size: settings.$fs-3; /* 18px */
+	line-height: 110%;
+	letter-spacing: 0px;
+}
+
+@mixin text-preset-5 {
+	font-size: settings.$fluid-fs-16-18;
+	line-height: 150%;
+	letter-spacing: 0;
+}
+.text-preset-5 {
+	@include text-preset-5;
+}

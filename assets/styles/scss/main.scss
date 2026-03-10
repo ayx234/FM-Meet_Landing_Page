@@ -1,0 +1,295 @@
+/** @format */
+
+/* Partials */
+
+@use "mixins";
+@use "settings";
+
+/* Font imports */
+
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
+
+
+/* ---- General Styles [elements] */
+
+body {
+	font-family: "Red Hat Display", sans-serif;
+	text-align: center;
+	background-color: settings.$white;
+	font-weight: 600;
+}
+
+h1,
+h2 {
+	font-weight: 900;
+	color: settings.$slate-900;
+}
+
+h1 {
+	@include mixins.text-preset-1;
+	text-shadow: 0 0.25rem 0.25rem settings.$slate-600;
+}
+
+h2 {
+	@include mixins.text-preset-2;
+}
+
+p {
+	margin-block: settings.$space-300;
+	color: settings.$slate-600;
+}
+/* ----- Components [Blocks, Exceptions] */
+
+/* --- Page sections --- */
+
+/* Page header */
+
+.header {
+	margin-block-start: settings.$fluid-space-600-1000;
+}
+
+.hero {
+	margin-block-start: settings.$fluid-fs-52-64;
+	margin-block-end: settings.$space-400;
+}
+
+.hero-full {
+	margin-block-end: settings.$fluid-fs-44-72;
+	margin-inline: auto;
+}
+
+.hero-left,
+.hero-right {
+	display: none;
+}
+
+.hero-content-inner-wrapper {
+  max-width: 28rem;
+  margin-inline: auto;
+}
+@media (min-width: 64rem) {
+	.hero {
+		display: grid;
+		grid-template-areas: "left-image header-content right-image";
+    grid-template-columns: 2fr 3fr 2fr;
+		align-items: center;
+	}
+
+	.hero-full {
+		display: none;
+	}
+
+	.hero-left,
+	.hero-right {
+		display: block;
+	}
+
+	.hero-left {
+		grid-area: left-image;
+	}
+  
+	.hero-right {
+    grid-area: right-image;
+    justify-self: end;
+	}
+
+	.hero-content {
+		grid-area: header-content;
+	}
+}
+
+/* Features-1 */
+
+.features-1 {
+	margin-block-start: settings.$fluid-space-56-120;
+}
+
+.features-1 .number::before {
+	content: "01";
+}
+
+.chatting-images {
+	display: flex;
+	flex-wrap: wrap;
+	gap: settings.$fluid-space-16-32;
+	margin-inline: auto;
+	justify-content: center;
+	margin-block: settings.$space-800;
+}
+
+.chatting-images img {
+	flex: 1 0 7rem; 
+	aspect-ratio: 1 / 1;
+	min-width: 7rem;
+	border-radius: 0.5rem;
+}
+
+.features-header {
+	max-width: settings.$space-6800;
+	margin-inline: auto;
+}
+
+.sub-title-intro {
+	@include mixins.text-preset-3;
+	text-transform: uppercase;
+	margin-block-end: settings.$space-200;
+	font-weight: 900;
+}
+
+$overlay-opacity: 0.9;
+/* footer */
+
+.footer {
+	margin-block-start: settings.$space-2150; /* 172px */
+	padding-block: settings.$space-800;
+	background-image:
+		linear-gradient(
+			rgba(settings.$cyan-600-rgb-values, $overlay-opacity),
+			rgba(settings.$cyan-600-rgb-values, $overlay-opacity)
+		),
+		url("../../images/mobile/image-footer.jpg");
+	background-size: cover;
+	color: settings.$white;
+	position: relative;
+}
+
+@media (min-width: 48rem) /* 768px */ {
+	.footer {
+		background-image:
+			linear-gradient(
+				rgba(settings.$cyan-600-rgb-values, $overlay-opacity),
+				rgba(settings.$cyan-600-rgb-values, $overlay-opacity)
+			),
+			url("../../images/tablet/image-footer.jpg");
+	}
+}
+
+@media (min-width: 64rem) /* 1024px */ {
+	.footer {
+		background-image:
+			linear-gradient(
+				rgba(settings.$cyan-600-rgb-values, $overlay-opacity),
+				rgba(settings.$cyan-600-rgb-values, $overlay-opacity)
+			),
+			url("../../images/desktop/image-footer.jpg");
+	}
+}
+
+.number-holder {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translate(-50%, calc(3.5rem / 2 - 100%));
+}
+
+.footer .number::before {
+	content: "02";
+}
+
+.footer-content {
+	@media (min-width: 64rem) {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 6rem;
+		justify-items: start;
+		justify-content: start;
+		text-align: start;
+		align-items: center;
+	}
+}
+
+.footer h2,
+.footer p {
+	color: inherit;
+}
+
+/* --- Smaller components --- */
+.button {
+	@include mixins.text-preset-5;
+	padding: settings.$space-200 settings.$space-500;
+	color: settings.$white;
+	border-radius: 50rem;
+	border: none;
+	font-weight: 800;
+}
+
+.button[data-color="cyan"] {
+	background-color: settings.$cyan-600;
+}
+
+.button[data-color="cyan"]:is(:hover, :focus-visible) {
+	background-color: settings.$cyan-300-hover;
+}
+
+.button[data-color="purple"] {
+	background-color: settings.$purple-600;
+}
+
+.button[data-color="purple"]:is(:hover, :focus-visible) {
+	background-color: settings.$purple-300-hover;
+}
+
+.number {
+	width: settings.$space-700;
+	height: settings.$space-700;
+	border-radius: 100%;
+	border: 0.125rem solid settings.$number-line-color;
+	color: settings.$slate-600;
+	font-weight: 900;
+	display: grid;
+	place-items: center;
+	background-color: settings.$white;
+}
+
+.number-line {
+	width: 0.125rem;
+	height: 80px;
+	background-color: settings.$number-line-color;
+}
+
+/* ----- Compositions ------ */
+
+button + button {
+	margin: settings.$space-200 settings.$space-200 0;
+}
+
+/* ----- Utilities ----- */
+
+/* layouts */
+
+.outer-wrapper {
+	max-width: 90rem; /* 1440px */
+	margin-inline: auto;
+}
+
+.wrapper {
+  margin-inline: settings.$fluid-space-28-160;
+  
+  @media(min-width: 64rem){
+    &.hero-content {
+      margin-inline: 0;
+      padding-inline: settings.$fluid-space-16-32;
+    }
+  }
+}
+
+
+
+.horizontally-center-elements {
+	display: grid;
+	justify-items: center;
+}
+
+/* color */
+
+.color-cyan-300 {
+	color: settings.$cyan-300;
+}
+
+.color-cyan-600 {
+	color: settings.$cyan-600;
+}
+
+.color-purple-300 {
+	color: settings.$purple-300;
+}
