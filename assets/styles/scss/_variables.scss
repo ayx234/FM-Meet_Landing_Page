@@ -3,7 +3,7 @@
  * @format
  */
 
-// ----- Settings [fonts, colors, spacing, etc] -----
+// ----- variables [fonts, colors, spacing, etc] -----
 
 // font-sizes
 $fs-1: 4rem; // 64px
@@ -68,11 +68,11 @@ $marker-size: $space-700;
 $marker-width: 0.125rem; // 2px
 $marker-line-height: 5rem; // 80px
 $footer-gap: 6rem; /* 96px */
-$shadow-sm: .25em; /* ~4px */
+$shadow-sm: 0.25em; /* ~4px */
 
 // borders
 $pill-shaped-border: 999rem;
 
 // Focus & interaction
-$outline-width: 0.3125em;  // ~5px at default font size
-$outline-offset: 0.125em;  // ~2px at default font size
+$outline-width: 0.3125em; // ~5px at default font size
+$outline-offset: 0.125em; // ~2px at default font size

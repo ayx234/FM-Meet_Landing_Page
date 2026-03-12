@@ -3,7 +3,7 @@
 // Partials
 
 @use "mixins";
-@use "settings";
+@use "variables";
 
 /* Font imports */
 
@@ -14,7 +14,7 @@
 body {
 	font-family: "Red Hat Display", sans-serif;
 	text-align: center;
-	background-color: settings.$white;
+	background-color: variables.$white;
 	font-weight: 600;
 }
 
@@ -22,7 +22,7 @@ h1,
 h2 {
 	@include mixins.shadow-text;
 	font-weight: 900;
-	color: settings.$slate-900;
+	color: variables.$slate-900;
 }
 
 h1 {
@@ -34,8 +34,8 @@ h2 {
 }
 
 p {
-	margin-block: settings.$space-300;
-	color: settings.$slate-600;
+	margin-block: variables.$space-300;
+	color: variables.$slate-600;
 }
 /* ----- Components [Blocks, Exceptions] */
 
@@ -44,16 +44,16 @@ p {
 /* Page header */
 
 .header {
-	margin-block-start: settings.$fluid-space-600-1000;
+	margin-block-start: variables.$fluid-space-600-1000;
 }
 
 .hero {
-	margin-block-start: settings.$fluid-fs-52-64;
-	margin-block-end: settings.$space-400;
+	margin-block-start: variables.$fluid-fs-52-64;
+	margin-block-end: variables.$space-400;
 }
 
 .hero-full {
-	margin-block-end: settings.$fluid-fs-44-72;
+	margin-block-end: variables.$fluid-fs-44-72;
 	margin-inline: auto;
 }
 
@@ -63,10 +63,10 @@ p {
 }
 
 .hero-content-inner-wrapper {
-	max-width: settings.$breakpoint-hero;
+	max-width: variables.$breakpoint-hero;
 	margin-inline: auto;
 }
-@media (min-width: settings.$breakpoint-desktop) /* 1024px */ {
+@media (min-width: variables.$breakpoint-desktop) /* 1024px */ {
 	.hero {
 		display: grid;
 		grid-template-areas: "left-image header-content right-image";
@@ -100,7 +100,7 @@ p {
 /* features */
 
 .features {
-	margin-block-start: settings.$fluid-space-56-120;
+	margin-block-start: variables.$fluid-space-56-120;
 }
 
 .features .marker::before {
@@ -110,10 +110,10 @@ p {
 .chatting-images {
 	display: flex;
 	flex-wrap: wrap;
-	gap: settings.$fluid-space-16-32;
+	gap: variables.$fluid-space-16-32;
 	margin-inline: auto;
 	justify-content: center;
-	margin-block: settings.$space-800;
+	margin-block: variables.$space-800;
 }
 
 .chatting-images img {
@@ -130,14 +130,14 @@ p {
 }
 
 .features-header {
-	max-width: settings.$space-6800;
+	max-width: variables.$space-6800;
 	margin-inline: auto;
 }
 
 .sub-title-intro {
 	@include mixins.text-preset-3;
 	text-transform: uppercase;
-	margin-block-end: settings.$space-200;
+	margin-block-end: variables.$space-200;
 	font-weight: 900;
 }
 
@@ -146,19 +146,19 @@ p {
 /* footer - content */
 
 .footer {
-	margin-block-start: settings.$space-2150;
-	padding-block: settings.$space-800;
-	color: settings.$white;
+	margin-block-start: variables.$space-2150;
+	padding-block: variables.$space-800;
+	color: variables.$white;
 	position: relative;
 
 	/* footer background */
 	@include mixins.footer-bg("../../images/mobile/image-footer.jpg");
 
-	@media (min-width: settings.$breakpoint-tablet) {
+	@media (min-width: variables.$breakpoint-tablet) {
 		@include mixins.footer-bg("../../images/tablet/image-footer.jpg");
 	}
 
-	@media (min-width: settings.$breakpoint-desktop) {
+	@media (min-width: variables.$breakpoint-desktop) {
 		@include mixins.footer-bg("../../images/desktop/image-footer.jpg");
 	}
 }
@@ -167,7 +167,7 @@ p {
 	position: absolute;
 	left: 50%;
 	top: 0;
-	transform: translate(-50%, calc(settings.$marker-size / 2 - 100%));
+	transform: translate(-50%, calc(variables.$marker-size / 2 - 100%));
 }
 
 .footer .marker::before {
@@ -175,10 +175,10 @@ p {
 }
 
 .footer-content {
-	@media (min-width: settings.$breakpoint-desktop) {
+	@media (min-width: variables.$breakpoint-desktop) {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: settings.$footer-gap;
+		gap: variables.$footer-gap;
 		justify-items: start;
 		justify-content: start;
 		text-align: start;
@@ -195,7 +195,7 @@ p {
 
 .attribution {
 	@include mixins.text-preset-5;
-	margin-block-start: settings.$fluid-space-16-32;
+	margin-block-start: variables.$fluid-space-16-32;
 }
 
 .attribution__link {
@@ -207,36 +207,36 @@ p {
 /* --- Smaller components --- */
 .button {
 	@include mixins.text-preset-5;
-	padding: settings.$space-200 settings.$space-500;
-	color: settings.$white;
-	border-radius: settings.$pill-shaped-border;
+	padding: variables.$space-200 variables.$space-500;
+	color: variables.$white;
+	border-radius: variables.$pill-shaped-border;
 	border: none;
 	font-weight: 800;
 	cursor: pointer;
 
 	&[data-color="cyan"] {
-		background-color: settings.$cyan-600;
+		background-color: variables.$cyan-600;
 	}
 
 	&[data-color="purple"] {
-		background-color: settings.$purple-600;
+		background-color: variables.$purple-600;
 	}
 }
 
 .button:is(:hover, :focus-visible) {
-	outline-offset: settings.$outline-offset;
+	outline-offset: variables.$outline-offset;
 
 	&[data-color="cyan"] {
 		@include mixins.button-hover-color(
-			settings.$cyan-300-hover,
-			settings.$cyan-300-hover
+			variables.$cyan-300-hover,
+			variables.$cyan-300-hover
 		);
 	}
 
 	&[data-color="purple"] {
 		@include mixins.button-hover-color(
-			settings.$purple-300-hover,
-			settings.$purple-300-hover
+			variables.$purple-300-hover,
+			variables.$purple-300-hover
 		);
 	}
 
@@ -246,27 +246,27 @@ p {
 }
 
 .marker {
-	width: settings.$marker-size;
-	height: settings.$marker-size;
+	width: variables.$marker-size;
+	height: variables.$marker-size;
 	border-radius: 100%;
-	border: settings.$marker-width solid settings.$marker-line-color;
-	color: settings.$slate-600;
+	border: variables.$marker-width solid variables.$marker-line-color;
+	color: variables.$slate-600;
 	font-weight: 900;
 	display: grid;
 	place-items: center;
-	background-color: settings.$white;
+	background-color: variables.$white;
 }
 
 .section-marker-line {
-	width: settings.$marker-width;
-	height: settings.$marker-line-height;
-	background-color: settings.$marker-line-color;
+	width: variables.$marker-width;
+	height: variables.$marker-line-height;
+	background-color: variables.$marker-line-color;
 }
 
 /* ----- Compositions ------ */
 
 button + button {
-	margin: settings.$space-200 settings.$space-200 0;
+	margin: variables.$space-200 variables.$space-200 0;
 }
 
 /* ----- Utilities ----- */
@@ -274,17 +274,17 @@ button + button {
 /* layouts */
 
 .outer-wrapper {
-	max-width: settings.$breakpoint-large-screens;
+	max-width: variables.$breakpoint-large-screens;
 	margin-inline: auto;
 }
 
 .wrapper {
-	margin-inline: settings.$fluid-space-28-160;
+	margin-inline: variables.$fluid-space-28-160;
 
-	@media (min-width: settings.$breakpoint-desktop) /* 1024px */ {
+	@media (min-width: variables.$breakpoint-desktop) /* 1024px */ {
 		&.hero-content {
 			margin-inline: 0;
-			padding-inline: settings.$fluid-space-16-32;
+			padding-inline: variables.$fluid-space-16-32;
 		}
 	}
 }
@@ -301,13 +301,13 @@ button + button {
 /* color */
 
 .color-cyan-300 {
-	color: settings.$cyan-300;
+	color: variables.$cyan-300;
 }
 
 .color-cyan-600 {
-	color: settings.$cyan-600;
+	color: variables.$cyan-600;
 }
 
 .color-purple-300 {
-	color: settings.$purple-300;
+	color: variables.$purple-300;
 }

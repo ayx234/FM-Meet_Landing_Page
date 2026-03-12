@@ -1,26 +1,26 @@
 /** @format */
 
-@use "settings";
+@use "variables";
 
 // ----- Text
 
 @mixin text-preset-1 {
 	// Usage: Page headings (h1). Responsive 36-64px
-	font-size: settings.$fluid-fs-36-64;
+	font-size: variables.$fluid-fs-36-64;
 	line-height: 110%;
 	letter-spacing: 0;
 }
 
 @mixin text-preset-2 {
 	// Usage: Page headings (h2). Responsive 32-40px
-	font-size: settings.$fluid-fs-32-40; // 40px
+	font-size: variables.$fluid-fs-32-40; // 40px
 	line-height: 110%;
 	letter-spacing: 0;
 }
 
 @mixin text-preset-3 {
 	// Usage: emphasis
-	font-size: settings.$fs-4; // 16px
+	font-size: variables.$fs-4; // 16px
 	line-height: 110%;
 	letter-spacing: 0.25rem; // 4px
 	font-weight: 800;
@@ -28,7 +28,7 @@
 
 @mixin text-preset-4 {
 	// Usage: Non-headings
-	font-size: settings.$fs-3; // 18px
+	font-size: variables.$fs-3; // 18px
 	line-height: 110%;
 	letter-spacing: 0px;
 }
@@ -37,7 +37,7 @@
 	// Usage: Non-headings
 	// longer text
 	// marginal text
-	font-size: settings.$fluid-fs-16-18;
+	font-size: variables.$fluid-fs-16-18;
 	line-height: 150%;
 	letter-spacing: 0;
 }
@@ -45,26 +45,34 @@
 // ----- Responsive footer background
 
 @mixin footer-bg($image-path) {
-    background-image:
-        linear-gradient(
-            rgba(settings.$cyan-600-rgb-values, settings.$footer-overlay-opacity),
-            rgba(settings.$cyan-600-rgb-values, settings.$footer-overlay-opacity)
-        ),
-        url($image-path);
-    background-size: cover;
+	background-image:
+		linear-gradient(
+			rgba(
+				variables.$cyan-600-rgb-values,
+				variables.$footer-overlay-opacity
+			),
+			rgba(
+				variables.$cyan-600-rgb-values,
+				variables.$footer-overlay-opacity
+			)
+		),
+		url($image-path);
+	background-size: cover;
 }
 
 // ----- Button states
 @mixin button-hover-color($bg-color, $outline-color) {
 	background-color: $bg-color;
-	outline: settings.$outline-width double $outline-color;
+	outline: variables.$outline-width double $outline-color;
 }
 
 // ----- Drop shadows
 
 @mixin shadow-sm {
-	box-shadow: settings.$shadow-sm settings.$shadow-sm settings.$shadow-sm 0 settings.$slate-900;
+	box-shadow: variables.$shadow-sm variables.$shadow-sm variables.$shadow-sm 0
+		variables.$slate-900;
 }
 @mixin shadow-text {
-	text-shadow: 0 settings.$shadow-sm settings.$shadow-sm settings.$slate-600;
+	text-shadow: 0 variables.$shadow-sm variables.$shadow-sm
+		variables.$slate-600;
 }
