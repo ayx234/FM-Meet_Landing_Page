@@ -20,13 +20,13 @@ body {
 
 h1,
 h2 {
+	@include mixins.shadow-text;
 	font-weight: 900;
 	color: settings.$slate-900;
 }
 
 h1 {
 	@include mixins.text-preset-1;
-	text-shadow: 0 0.25rem 0.25rem settings.$slate-600;
 }
 
 h2 {
@@ -63,10 +63,10 @@ p {
 }
 
 .hero-content-inner-wrapper {
-	max-width: 28rem;
+	max-width: settings.$breakpoint-hero;
 	margin-inline: auto;
 }
-@media (min-width: 64rem) /* 1024px */ {
+@media (min-width: settings.$breakpoint-desktop) /* 1024px */ {
 	.hero {
 		display: grid;
 		grid-template-areas: "left-image header-content right-image";
@@ -97,13 +97,13 @@ p {
 	}
 }
 
-/* Features-1 */
+/* features */
 
-.features-1 {
+.features {
 	margin-block-start: settings.$fluid-space-56-120;
 }
 
-.features-1 .number::before {
+.features .marker::before {
 	content: "01";
 }
 
@@ -117,11 +117,11 @@ p {
 }
 
 .chatting-images img {
+	@include mixins.shadow-sm;
 	flex: 1 0 7rem;
 	aspect-ratio: 1 / 1;
-	min-width: 7rem;
+	min-width: 7rem; /* 7rem is working well on screen width 320px and scales well. */
 	border-radius: 0.5rem;
-	box-shadow: 0.25rem 0.25rem 0.25rem 0 settings.$slate-900;
 	transition: transform 0.25s;
 
 	&:is(:hover, :focus-visible) {
@@ -143,76 +143,42 @@ p {
 
 /* footer */
 
+/* footer - content */
+
 .footer {
 	margin-block-start: settings.$space-2150;
 	padding-block: settings.$space-800;
-	background-image:
-		linear-gradient(
-			rgba(
-				settings.$cyan-600-rgb-values,
-				settings.$footer-overlay-opacity
-			),
-			rgba(
-				settings.$cyan-600-rgb-values,
-				settings.$footer-overlay-opacity
-			)
-		),
-		url("../../images/mobile/image-footer.jpg");
-	background-size: cover;
 	color: settings.$white;
 	position: relative;
-}
 
-@media (min-width: 48rem) /* 768px */ {
-	.footer {
-		background-image:
-			linear-gradient(
-				rgba(
-					settings.$cyan-600-rgb-values,
-					settings.$footer-overlay-opacity
-				),
-				rgba(
-					settings.$cyan-600-rgb-values,
-					settings.$footer-overlay-opacity
-				)
-			),
-			url("../../images/tablet/image-footer.jpg");
+	/* footer background */
+	@include mixins.footer-bg("../../images/mobile/image-footer.jpg");
+
+	@media (min-width: settings.$breakpoint-tablet) {
+		@include mixins.footer-bg("../../images/tablet/image-footer.jpg");
+	}
+
+	@media (min-width: settings.$breakpoint-desktop) {
+		@include mixins.footer-bg("../../images/desktop/image-footer.jpg");
 	}
 }
 
-@media (min-width: 64rem) /* 1024px */ {
-	.footer {
-		background-image:
-			linear-gradient(
-				rgba(
-					settings.$cyan-600-rgb-values,
-					settings.$footer-overlay-opacity
-				),
-				rgba(
-					settings.$cyan-600-rgb-values,
-					settings.$footer-overlay-opacity
-				)
-			),
-			url("../../images/desktop/image-footer.jpg");
-	}
-}
-
-.number-holder {
+.marker-positioner-start {
 	position: absolute;
 	left: 50%;
 	top: 0;
-	transform: translate(-50%, calc(3.5rem / 2 - 100%));
+	transform: translate(-50%, calc(settings.$marker-size / 2 - 100%));
 }
 
-.footer .number::before {
+.footer .marker::before {
 	content: "02";
 }
 
 .footer-content {
-	@media (min-width: 64rem) {
+	@media (min-width: settings.$breakpoint-desktop) {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 6rem;
+		gap: settings.$footer-gap;
 		justify-items: start;
 		justify-content: start;
 		text-align: start;
@@ -225,37 +191,65 @@ p {
 	color: inherit;
 }
 
+/* footer - attribution */
+
+.attribution {
+	@include mixins.text-preset-5;
+	margin-block-start: settings.$fluid-space-16-32;
+}
+
+.attribution__link {
+	&:not(:visited) {
+		color: inherit;
+	}
+}
+
 /* --- Smaller components --- */
 .button {
 	@include mixins.text-preset-5;
 	padding: settings.$space-200 settings.$space-500;
 	color: settings.$white;
-	border-radius: 50rem;
+	border-radius: settings.$pill-shaped-border;
 	border: none;
 	font-weight: 800;
+	cursor: pointer;
+
+	&[data-color="cyan"] {
+		background-color: settings.$cyan-600;
+	}
+
+	&[data-color="purple"] {
+		background-color: settings.$purple-600;
+	}
 }
 
-.button[data-color="cyan"] {
-	background-color: settings.$cyan-600;
+.button:is(:hover, :focus-visible) {
+	outline-offset: settings.$outline-offset;
+
+	&[data-color="cyan"] {
+		@include mixins.button-hover-color(
+			settings.$cyan-300-hover,
+			settings.$cyan-300-hover
+		);
+	}
+
+	&[data-color="purple"] {
+		@include mixins.button-hover-color(
+			settings.$purple-300-hover,
+			settings.$purple-300-hover
+		);
+	}
+
+	&[data-variant="no-outline"] {
+		outline: none;
+	}
 }
 
-.button[data-color="cyan"]:is(:hover, :focus-visible) {
-	background-color: settings.$cyan-300-hover;
-}
-
-.button[data-color="purple"] {
-	background-color: settings.$purple-600;
-}
-
-.button[data-color="purple"]:is(:hover, :focus-visible) {
-	background-color: settings.$purple-300-hover;
-}
-
-.number {
-	width: settings.$space-700;
-	height: settings.$space-700;
+.marker {
+	width: settings.$marker-size;
+	height: settings.$marker-size;
 	border-radius: 100%;
-	border: 0.125rem solid settings.$number-line-color;
+	border: settings.$marker-width solid settings.$marker-line-color;
 	color: settings.$slate-600;
 	font-weight: 900;
 	display: grid;
@@ -263,10 +257,10 @@ p {
 	background-color: settings.$white;
 }
 
-.number-line {
-	width: 0.125rem;
-	height: 80px;
-	background-color: settings.$number-line-color;
+.section-marker-line {
+	width: settings.$marker-width;
+	height: settings.$marker-line-height;
+	background-color: settings.$marker-line-color;
 }
 
 /* ----- Compositions ------ */
@@ -280,14 +274,14 @@ button + button {
 /* layouts */
 
 .outer-wrapper {
-	max-width: 90rem; /* 1440px */
+	max-width: settings.$breakpoint-large-screens;
 	margin-inline: auto;
 }
 
 .wrapper {
 	margin-inline: settings.$fluid-space-28-160;
 
-	@media (min-width: 64rem) /* 1024px */ {
+	@media (min-width: settings.$breakpoint-desktop) /* 1024px */ {
 		&.hero-content {
 			margin-inline: 0;
 			padding-inline: settings.$fluid-space-16-32;
@@ -299,7 +293,7 @@ button + button {
 	@include mixins.text-preset-5;
 }
 
-.horizontally-center-elements {
+.center-inline {
 	display: grid;
 	justify-items: center;
 }

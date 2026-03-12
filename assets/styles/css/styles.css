@@ -6,6 +6,9 @@
  * 
  * @format
  */
+/* 1440px */
+/* 96px */
+/* ~4px */
 /* ---- General Styles [elements] */
 body {
   font-family: "Red Hat Display", sans-serif;
@@ -16,19 +19,19 @@ body {
 
 h1,
 h2 {
+  text-shadow: 0 0.25em 0.25em hsl(240, 10%, 57%);
   font-weight: 900;
   color: hsl(240, 21%, 20%);
 }
 
 h1 {
-  font-size: clamp(2.25rem, 1.75rem + 2.5vw, 4rem); /* 64px */
+  font-size: clamp(2.25rem, 1.75rem + 2.5vw, 4rem);
   line-height: 110%;
   letter-spacing: 0;
-  text-shadow: 0 0.25rem 0.25rem hsl(240, 10%, 57%);
 }
 
 h2 {
-  font-size: clamp(2rem, 1.8571rem + 0.7143vw, 2.5rem); /* 40px */
+  font-size: clamp(2rem, 1.8571rem + 0.7143vw, 2.5rem);
   line-height: 110%;
   letter-spacing: 0;
 }
@@ -90,12 +93,12 @@ p {
     grid-area: header-content;
   }
 }
-/* Features-1 */
-.features-1 {
+/* features */
+.features {
   margin-block-start: clamp(3.5rem, 2.3571rem + 5.7143vw, 7.5rem);
 }
 
-.features-1 .number::before {
+.features .marker::before {
   content: "01";
 }
 
@@ -109,11 +112,11 @@ p {
 }
 
 .chatting-images img {
+  box-shadow: 0.25em 0.25em 0.25em 0 hsl(240, 21%, 20%);
   flex: 1 0 7rem;
   aspect-ratio: 1/1;
-  min-width: 7rem;
+  min-width: 7rem; /* 7rem is working well on screen width 320px and scales well. */
   border-radius: 0.5rem;
-  box-shadow: 0.25rem 0.25rem 0.25rem 0 hsl(240, 21%, 20%);
   transition: transform 0.25s;
 }
 .chatting-images img:is(:hover, :focus-visible) {
@@ -126,9 +129,9 @@ p {
 }
 
 .sub-title-intro {
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
   line-height: 110%;
-  letter-spacing: 0.25rem; /* 4px */
+  letter-spacing: 0.25rem;
   font-weight: 800;
   text-transform: uppercase;
   margin-block-end: 1rem;
@@ -136,33 +139,37 @@ p {
 }
 
 /* footer */
+/* footer - content */
 .footer {
   margin-block-start: 10.75rem;
   padding-block: 4rem;
-  background-image: linear-gradient(rgba(77, 150, 168, 0.9), rgba(77, 150, 168, 0.9)), url("../../images/mobile/image-footer.jpg");
-  background-size: cover;
   color: hsl(0, 0%, 98%);
   position: relative;
+  /* footer background */
+  background-image: linear-gradient(rgba(77, 150, 168, 0.9), rgba(77, 150, 168, 0.9)), url("../../images/mobile/image-footer.jpg");
+  background-size: cover;
 }
-
 @media (min-width: 48rem) {
   .footer {
     background-image: linear-gradient(rgba(77, 150, 168, 0.9), rgba(77, 150, 168, 0.9)), url("../../images/tablet/image-footer.jpg");
+    background-size: cover;
   }
 }
 @media (min-width: 64rem) {
   .footer {
     background-image: linear-gradient(rgba(77, 150, 168, 0.9), rgba(77, 150, 168, 0.9)), url("../../images/desktop/image-footer.jpg");
+    background-size: cover;
   }
 }
-.number-holder {
+
+.marker-positioner-start {
   position: absolute;
   left: 50%;
   top: 0;
   transform: translate(-50%, calc(1.75rem - 100%));
 }
 
-.footer .number::before {
+.footer .marker::before {
   content: "02";
 }
 
@@ -183,6 +190,18 @@ p {
   color: inherit;
 }
 
+/* footer - attribution */
+.attribution {
+  font-size: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+  line-height: 150%;
+  letter-spacing: 0;
+  margin-block-start: clamp(1rem, 0.7143rem + 1.4286vw, 2rem);
+}
+
+.attribution__link:not(:visited) {
+  color: inherit;
+}
+
 /* --- Smaller components --- */
 .button {
   font-size: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
@@ -190,28 +209,34 @@ p {
   letter-spacing: 0;
   padding: 1rem 2.5rem;
   color: hsl(0, 0%, 98%);
-  border-radius: 50rem;
+  border-radius: 999rem;
   border: none;
   font-weight: 800;
+  cursor: pointer;
 }
-
 .button[data-color=cyan] {
   background-color: hsl(192, 37%, 48%);
 }
-
-.button[data-color=cyan]:is(:hover, :focus-visible) {
-  background-color: hsl(192, 90%, 60%);
-}
-
 .button[data-color=purple] {
   background-color: hsl(268, 34%, 53%);
 }
 
-.button[data-color=purple]:is(:hover, :focus-visible) {
+.button:is(:hover, :focus-visible) {
+  outline-offset: 0.125em;
+}
+.button:is(:hover, :focus-visible)[data-color=cyan] {
+  background-color: hsl(192, 90%, 60%);
+  outline: 0.3125em double hsl(192, 90%, 60%);
+}
+.button:is(:hover, :focus-visible)[data-color=purple] {
   background-color: hsl(268, 100%, 75%);
+  outline: 0.3125em double hsl(268, 100%, 75%);
+}
+.button:is(:hover, :focus-visible)[data-variant=no-outline] {
+  outline: none;
 }
 
-.number {
+.marker {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 100%;
@@ -223,9 +248,9 @@ p {
   background-color: hsl(0, 0%, 98%);
 }
 
-.number-line {
+.section-marker-line {
   width: 0.125rem;
-  height: 80px;
+  height: 5rem;
   background-color: hsl(240, 18%, 85%);
 }
 
@@ -237,7 +262,7 @@ button + button {
 /* ----- Utilities ----- */
 /* layouts */
 .outer-wrapper {
-  max-width: 90rem; /* 1440px */
+  max-width: 90rem;
   margin-inline: auto;
 }
 
@@ -257,7 +282,7 @@ button + button {
   letter-spacing: 0;
 }
 
-.horizontally-center-elements {
+.center-inline {
   display: grid;
   justify-items: center;
 }

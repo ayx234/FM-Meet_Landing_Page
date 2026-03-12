@@ -3,9 +3,9 @@
  * @format
  */
 
-// ----- Settings [fonts, colors, spacing, etc] ----- 
+// ----- Settings [fonts, colors, spacing, etc] -----
 
-// font-sizes 
+// font-sizes
 $fs-1: 4rem; // 64px
 $fs-2: 2.5rem; // 40px
 $fs-3: 1.125rem; // 18px
@@ -30,9 +30,8 @@ $slate-300: hsl(240, 18%, 85%);
 $slate-600: hsl(240, 10%, 57%);
 $slate-900: hsl(240, 21%, 20%);
 $white: hsl(0, 0%, 98%);
-$hover-opacity: 0.8;
 $footer-overlay-opacity: 0.9;
-$number-line-color: $slate-300;
+$marker-line-color: $slate-300;
 
 // spacing
 
@@ -55,3 +54,25 @@ $fluid-space-16-32: clamp(1rem, 0.7143rem + 1.4286vw, 2rem);
 $fluid-space-28-160: clamp(1.75rem, -0.6071rem + 11.7857vw, 10rem);
 $fluid-space-600-1000: clamp(3rem, 2.4286rem + 2.8571vw, 5rem);
 $fluid-space-56-120: clamp(3.5rem, 2.3571rem + 5.7143vw, 7.5rem);
+
+// screen breakpoints
+$breakpoint-desktop: 64rem; // 1024px - tablet to desktop
+$breakpoint-tablet: 48rem; // 768px - mobile to tablet
+$breakpoint-large-screens: 90rem; /* 1440px */
+
+// container breakpoints
+$breakpoint-hero: 28rem; // 448px
+
+// sizing
+$marker-size: $space-700;
+$marker-width: 0.125rem; // 2px
+$marker-line-height: 5rem; // 80px
+$footer-gap: 6rem; /* 96px */
+$shadow-sm: .25em; /* ~4px */
+
+// borders
+$pill-shaped-border: 999rem;
+
+// Focus & interaction
+$outline-width: 0.3125em;  // ~5px at default font size
+$outline-offset: 0.125em;  // ~2px at default font size

@@ -4,7 +4,83 @@ PROJECT TODOS:
 
 - Use AI
     - Review for accessibility, readability and maintainability
+    - Adjust comments if needed
 - Construct this README
+
+- AI Prompt:
+
+Review my HTML and SCSS files for accessibility, accountability, and maintainability.
+Consider all files as an interconnected project before suggesting changes.
+
+Files to review:
+- index.html (main structure)
+- ./assets/styles/scss/_settings.scss (styling)
+- ./assets/styles/scss/_mixins.scss (styling)
+- ./assets/styles/scss/main.scss (styling)
+
+Please analyze the following aspects:
+
+1. Accessibility:
+   - ARIA labels and semantic HTML usage
+   - Color contrast ratios
+   - Keyboard navigation support
+   - Alt text for images
+   - Error handling
+
+2. Accountability & Code Quality:
+   - Unused CSS rules or variables
+   - Magic numbers without explanation
+   - Naming conventions consistency
+   - Specificity issues in selectors
+
+3. Maintainability:
+   - CSS organization (variables, mixins, nesting depth)
+   - Code duplication opportunities
+   - Responsive design patterns
+
+4. Documentation:
+   - Suggest inline comments for complex logic
+   - Document SCSS mixins and functions
+   - Flag sections needing clarification
+
+Please provide specific recommendations.
+
+2nd prompt:
+
+You are a frontend code reviewer focused on readability and maintainability. Review the following HTML and SCSS code with these principles in mind:
+
+Class Naming Conventions:
+
+- Class names must reflect purpose and functionality, not appearance (e.g., use .product-card instead of .blue-box, use .form-error-message instead of .red-text)
+- Use semantic, descriptive names that clearly communicate what the element does
+- Avoid abbreviations unless they're widely recognized in the domain
+- Use kebab-case (lowercase with hyphens) for all class names
+- Prefix utility or state classes with a consistent modifier (e.g., .is-active, .has-error, .is-disabled)
+
+Structure & Organization:
+
+- Group related styles logically by component or feature, not by property type
+- Use comments to explain the "why" behind non-obvious styling decisions
+- Maintain a clear separation between layout, component, and utility styles
+
+HTML Readability:
+
+- Keep indentation consistent and logical to reflect the DOM hierarchy
+- Use data attributes for JavaScript hooks (e.g., data-js-toggle) separate from styling classes
+
+SCSS Best Practices:
+
+- Use variables for colors, spacing, typography, and breakpoints with descriptive names
+- Keep mixins focused and reusable; document their parameters
+- Avoid over-nesting; flatten selectors when they become too specific
+- Use functions for calculations (e.g., spacing scales, color adjustments)
+
+Overall Goals:
+
+- Code should be understandable to another developer (or your future self) without extensive comments
+- Changes to appearance should not require renaming classes
+The codebase should scale without becoming unwieldy
+
 
 # Frontend Mentor - Meet landing page solution
 

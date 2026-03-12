@@ -82,12 +82,18 @@ select {
 }
 
 /* 
-My addition - button font color on firefox mobile does not autumatically inherit - Feb 2026
+My addition
+ - button font color on firefox mobile does not autumatically inherit - Feb 2026
+ - focus-visible outline for selectable elements uses element color - Mar 2026
  */
 
 button,
 input {
 	color: inherit;
+}
+
+:is(input, button, textarea, a, select, [tabindex]):focus-visible {
+	outline: 0.125em solid currentColor;
 }
 
 /*
