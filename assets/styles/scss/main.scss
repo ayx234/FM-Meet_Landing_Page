@@ -214,11 +214,11 @@ p {
 	font-weight: 800;
 	cursor: pointer;
 
-	&[data-color="cyan"] {
+	&[data-color="primary"] {
 		background-color: variables.$cyan-600;
 	}
 
-	&[data-color="purple"] {
+	&[data-color="secondary"] {
 		background-color: variables.$purple-600;
 	}
 }
@@ -226,14 +226,14 @@ p {
 .button:is(:hover, :focus-visible) {
 	outline-offset: variables.$outline-offset;
 
-	&[data-color="cyan"] {
+	&[data-color="primary"] {
 		@include mixins.button-hover-color(
 			variables.$cyan-300-hover,
 			variables.$cyan-300-hover
 		);
 	}
 
-	&[data-color="purple"] {
+	&[data-color="secondary"] {
 		@include mixins.button-hover-color(
 			variables.$purple-300-hover,
 			variables.$purple-300-hover
@@ -300,14 +300,14 @@ button + button {
 
 /* color */
 
-.color-cyan-300 {
+.color-primary-300 {
 	color: variables.$cyan-300;
 }
 
-.color-cyan-600 {
+.color-primary-600 {
 	color: variables.$cyan-600;
 }
 
-.color-purple-300 {
+.color-secondary-300 {
 	color: variables.$purple-300;
 }

@@ -214,21 +214,21 @@ p {
   font-weight: 800;
   cursor: pointer;
 }
-.button[data-color=cyan] {
+.button[data-color=primary] {
   background-color: hsl(192, 37%, 48%);
 }
-.button[data-color=purple] {
+.button[data-color=secondary] {
   background-color: hsl(268, 34%, 53%);
 }
 
 .button:is(:hover, :focus-visible) {
   outline-offset: 0.125em;
 }
-.button:is(:hover, :focus-visible)[data-color=cyan] {
+.button:is(:hover, :focus-visible)[data-color=primary] {
   background-color: hsl(192, 90%, 60%);
   outline: 0.3125em double hsl(192, 90%, 60%);
 }
-.button:is(:hover, :focus-visible)[data-color=purple] {
+.button:is(:hover, :focus-visible)[data-color=secondary] {
   background-color: hsl(268, 100%, 75%);
   outline: 0.3125em double hsl(268, 100%, 75%);
 }
@@ -288,15 +288,15 @@ button + button {
 }
 
 /* color */
-.color-cyan-300 {
+.color-primary-300 {
   color: hsl(192, 90%, 77%);
 }
 
-.color-cyan-600 {
+.color-primary-600 {
   color: hsl(192, 37%, 48%);
 }
 
-.color-purple-300 {
+.color-secondary-300 {
   color: hsl(268, 100%, 86%);
 }
 

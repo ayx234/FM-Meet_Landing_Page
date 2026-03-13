@@ -1,14 +1,208 @@
 <!-- @format -->
 
-PROJECT TODOS:
+# Frontend Mentor - Meet landing page solution
 
-- Use AI
-    - Review for accessibility, readability and maintainability
-    - Adjust comments if needed
-- Construct this README
+This is a solution to the [Meet landing page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/meet-landing-page-rbTDS6OUR). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-- AI Prompt:
+## Table of contents
 
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+    - [CSS](#what-i-learned--css)
+    - [SASS](#what-i-learned--sass)
+    - [CSS & SASS](#what-i-learned--css--sass)
+    - [VSCode](#what-i-learned--vscode)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+  - [AI Collaboration](#ai-collaboration)
+- [Author](#author)
+
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- View the optimal layout depending on their device's screen size
+- See hover states for interactive elements
+
+### Screenshot
+
+This screenshot shows:
+
+- `:focus-visible` state for `<button>What is it?</button>`
+- `:hover` state for the third image `<img alt="man in video chat" />`
+
+![screenshot](./screenshot.png)
+
+### Links
+
+- [Solution](https://github.com/ayx234/FM-Meet_Landing_Page)
+- [Live site](https://ayx234.github.io/FM-Meet_Landing_Page)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- Fluid Responsive Design
+  - Fluid Typography
+  - Fluid Spacing
+- Mobile-first workflow
+- Flexbox
+- CSS Grid
+- [SASS](https://sass-lang.com/) - CSS Preprocessor
+  - variables
+  - Mixins
+
+### What I learned
+
+#### What-I-Learned--CSS
+
+- Class names should describe purpose and functionality not appearance.
+  - E.g. `.primary-color` not `.green` and `.price-card` not `.yellow-card`.
+- Use variables for breakpoints.
+  - Makes changing the breakpoint easier for multiple @media queries
+- Use variables for your values of colors, spacing, fonts etc...
+- If you use magic numbers, explain why in a comment (document why).
+
+#### What-I-Learned--SASS
+
+#### Importing Variables
+
+After importing a file that has variables. We need a "namespace" to preceed the variables in order to use them. The default name space is the name of the file without the `_`.
+
+\_variables.scss:
+
+```CSS
+$my-color: value;
+
+```
+
+main.scss:
+
+```CSS
+@use 'variables'
+
+.body {
+   color: variables.$my-color;
+}
+```
+
+#### Use Mixins to Reduce Code Duplication
+
+Mixins help apply the DRY principle (Dont' Repeat Yourself).
+
+a group of properties that are used together more than once in the code can be turned into a mixin.
+
+\_mixins.scss:
+
+```CSS
+
+// ----- Text
+
+@mixin text-preset-1 {
+  // Usage: Page headings (h1).
+  font-size: variables.$my-value;
+  line-height: 110%;
+  letter-spacing: 0;
+}
+
+// ----- Button states
+@mixin button-hover-color($bg-color, $outline-color) {
+  background-color: $bg-color;
+  outline: ##px outline-style-value $outline-color;
+}
+
+// ----- Drop shadows
+
+@mixin shadow-text {
+  text-shadow: #px #px #px colorValue;
+}
+```
+
+main.scss:
+
+```CSS
+h1,
+h2 {
+  @include mixins.shadow-text;
+}
+
+h1 {
+  @include mixins.text-preset-1;
+}
+
+.button:is(:hover, :focus-visible) {
+  outline-offset: variables.$outline-offset;
+
+  &[data-color="cyan"] {
+    @include mixins.button-hover-color(
+      variables.$cyan-300-hover,
+      variables.$cyan-300-hover
+    );
+  }
+}
+```
+
+#### What-I-Learned--CSS-&-SASS
+
+- Using CSS variables is preferred to using SASS variables for:
+  - Dynamic and Runtime Flexibility
+    - CSS variables can be changed at runtime using JavaScript or by updating styles dynamically.
+  - Cascade and Inheritance
+    - With CSS variables, you can change values based on media queries directly in CSS without recompiling. Sass variables can't do this—they're baked into the compiled output.
+  - Interoperability
+    - CSS variables work seamlessly across different preprocessors and frameworks, whereas Sass variables are Sass-specific. If you ever need to mix technologies or migrate away from Sass, CSS variables provide better portability.
+- Decide ahead if you want to work with CSS variables or SCSS variables. From experience in this project, changing variables after completing the site might require increased mental effort and is prone to bugs. In my case I used regex and vscode folder search and replace (workspace search & replace?) using ctrl + shift + h.
+
+#### What-I-Learned--VSCODE
+
+Search and replace can be activated across the working folder using `ctrl + shift + h.`
+
+### Continued development
+
+#### Continued-Development--HTML
+
+- Accessibilty
+- Semantic HTML
+
+#### Continued-Development--CSS
+
+- Layouts
+- Designing
+- Animations
+- New features and properties
+
+#### Continued-Development--SASS
+
+- Folder structures
+- Functions
+- Mixins
+- More Basics
+
+### Useful resources
+
+- Generation of `clamp()` values for fluid `font-size`s and spacing [Utopia.fyi](https://utopia.fyi/)
+
+### AI Collaboration
+
+I used VScode Copilot chat that used Calude 4.5 as a model.
+
+This project comes with an AGENTS.md and a CLAUDE.md that instruct AI modules to give suggestions for where code is to be changed instead of making changes.
+
+#### Prompts
+
+I used two prompts as follows
+
+#### Prompt 1
+
+```
 Review my HTML and SCSS files for accessibility, accountability, and maintainability.
 Consider all files as an interconnected project before suggesting changes.
 
@@ -44,9 +238,11 @@ Please analyze the following aspects:
    - Flag sections needing clarification
 
 Please provide specific recommendations.
+```
 
-2nd prompt:
+#### Prompt 2
 
+```
 You are a frontend code reviewer focused on readability and maintainability. Review the following HTML and SCSS code with these principles in mind:
 
 Class Naming Conventions:
@@ -80,129 +276,9 @@ Overall Goals:
 - Code should be understandable to another developer (or your future self) without extensive comments
 - Changes to appearance should not require renaming classes
 The codebase should scale without becoming unwieldy
-
-
-# Frontend Mentor - Meet landing page solution
-
-This is a solution to the [Meet landing page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/meet-landing-page-rbTDS6OUR). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
-
-## Table of contents
-
-- [Overview](#overview)
-    - [The challenge](#the-challenge)
-    - [Screenshot](#screenshot)
-    - [Links](#links)
-- [My process](#my-process)
-    - [Built with](#built-with)
-    - [What I learned](#what-i-learned)
-    - [Continued development](#continued-development)
-    - [Useful resources](#useful-resources)
-    - [AI Collaboration](#ai-collaboration)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
-## Overview
-
-### The challenge
-
-Users should be able to:
-
-- View the optimal layout depending on their device's screen size
-- See hover states for interactive elements
-
-### Screenshot
-
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
-
-### Links
-
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
-
-## My process
-
-### Built with
-
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
-### What I learned
-
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
 ```
-
-```css
-.proud-of-this-css {
-	color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-	console.log("🎉");
-};
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-### AI Collaboration
-
-Describe how you used AI tools (if any) during this project. This helps demonstrate your ability to work effectively with AI assistants.
-
-- What tools did you use (e.g., ChatGPT, Claude, GitHub Copilot)?
-- How did you use them (e.g., debugging, generating boilerplate, brainstorming solutions)?
-- What worked well? What didn't?
-
-**Note: Delete this note and the content above if you didn't use AI, or replace with your own experience.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Github - [Ali Al Yahya](https://github.com/ayx234/)
+- Frontend Mentor - [@ayx234](https://www.frontendmentor.io/profile/ayx234)

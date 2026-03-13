@@ -82,9 +82,7 @@ select {
 }
 
 /* 
-My addition
- - button font color on firefox mobile does not autumatically inherit - Feb 2026
- - focus-visible outline for selectable elements uses element color - Mar 2026
+My additions
  */
 
 button,
@@ -96,6 +94,9 @@ input {
 	outline: 0.125em solid currentColor;
 }
 
+button {
+  cursor: pointer;
+}
 /*
     7. Avoid text overflows
   */
